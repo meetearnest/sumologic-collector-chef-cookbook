@@ -28,6 +28,8 @@
 
 if File.exists? node['sumologic']['installDir']
     Chef::Log.info "Sumo Logic Collector found."
+    include_recipe 'sumologic-collector::sumoconf'
+    include_recipe 'sumologic-collector::sumojson'
     # TODO recipe update
 else
     Chef::Log.info "Installing Sumo Logic Collector..."
